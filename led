@@ -1,0 +1,11 @@
+LOCATION=$(ls /sys/class/leds | grep scrolllock)
+FILE_LOCATION=/sys/class/leds/$LOCATION/brightness
+
+FILE_CONTENT=$(cat $FILE_LOCATION)
+
+if [ $FILE_CONTENT = 0 ]; then
+	echo 1 > $FILE_LOCATION
+else
+	echo 0 > $FILE_LOCATION
+fi
+
